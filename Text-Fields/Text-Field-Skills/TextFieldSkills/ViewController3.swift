@@ -18,30 +18,30 @@ class ViewController3: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         // Create the Button
-        let button = UIButton(type: .Custom)
+        let button = UIButton(type: .custom)
         let boltImage = UIImage(named: "lightening-bolt")!
-        button.setImage(boltImage, forState: .Normal)
+        button.setImage(boltImage, for: UIControlState())
         button.frame = CGRect(x: 0, y: 0, width: 28, height: 28)
         
         // Add Target Method
-        button.addTarget(self, action: #selector(addLightening), forControlEvents: .TouchDown)
+        button.addTarget(self, action: #selector(addLightening), for: .touchDown)
         
         // Place the button in the right side of the text field
         textField.rightView = button
-        textField.rightViewMode = .Always
+        textField.rightViewMode = .always
         
         // Register for Keyboard Notifications
-        let center = NSNotificationCenter.defaultCenter()
+        let center = NotificationCenter.default
         
-        center.addObserver(self, selector: #selector(keyboardShows), name: UIKeyboardWillShowNotification, object: nil)
-        center.addObserver(self, selector: #selector(keyboardHides), name: UIKeyboardWillHideNotification, object: nil)
+        center.addObserver(self, selector: #selector(keyboardShows), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        center.addObserver(self, selector: #selector(keyboardHides), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
 
     // MARK: -  Repalce Spaces ⚡
     
-    @IBAction func addLightening(sending: UIButton) {
-        let newString = textField.text!.stringByReplacingOccurrencesOfString(" ", withString: lighteningString)
+    @IBAction func addLightening(_ sending: UIButton) {
+        let newString = textField.text!.replacingOccurrences(of: " ", with: lighteningString)
         
         textField.resignFirstResponder()
         
@@ -53,7 +53,7 @@ class ViewController3: UIViewController, UITextFieldDelegate {
     
     var originalFrame: CGRect!
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         // Let the text field's constraints be re-configured programmatically
@@ -61,32 +61,35 @@ class ViewController3: UIViewController, UITextFieldDelegate {
     }
     
 
-    @objc func keyboardShows(notification: NSNotification) {
+    @objc func keyboardShows(_ notification: Notification) {
         
         // Cache the old frame
         originalFrame = self.view.frame
         
         // Calculate the new frame
-        let keyboardSize = notification.userInfo![UIKeyboardFrameBeginUserInfoKey]!.CGRectValue().size
+        let keyboardSize = (notification.userInfo![UIKeyboardFrameBeginUserInfoKey]! as AnyObject).cgRectValue.size
         let newOrigin = CGPoint(x: originalFrame.origin.x, y: originalFrame.origin.y - keyboardSize.height)
         let insets = CGRect(origin: newOrigin, size: originalFrame.size)
         
         // Set the frame, with animation.
-        UIView.animateWithDuration(0.3) {
+        UIView.animate(withDuration: 0.3, animations: {
             self.view.frame = insets
-        }
+        }) 
     }
     
-    @objc func keyboardHides(notification: NSNotification) {
-        UIView.animateWithDuration(0.3) {
-            self.view.frame = self.originalFrame
+    @objc func keyboardHides(_ notification: Notification) {
+        
+        if let originalFrame = self.originalFrame {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.frame = originalFrame
+            })
         }
     }
     
     
     // MARK: - UITextFieldDelegate
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
         return true

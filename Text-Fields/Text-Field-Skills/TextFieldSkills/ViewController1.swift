@@ -18,25 +18,25 @@ class ViewController1: UIViewController {
         super.viewDidLoad()
         
         // Create the Button
-        let button = UIButton(type: .Custom)
+        let button = UIButton(type: .custom)
         let boltImage = UIImage(named: "lightening-bolt")!
-        button.setImage(boltImage, forState: .Normal)
+        button.setImage(boltImage, for: UIControlState())
         button.frame = CGRect(x: 0, y: 0, width: 28, height: 28)
         
         // Add Target Method
-        button.addTarget(self, action: #selector(addLightning), forControlEvents: .TouchDown)
+        button.addTarget(self, action: #selector(addLightning), for: .touchDown)
         
         // Place the button in the right side of the text field
         textField.rightView = button
-        textField.rightViewMode = .WhileEditing
+        textField.rightViewMode = .whileEditing
     }
     
     
     // MARK: -  Repalce Spaces ⚡
     
-    func addLightning(sending: UIButton) {
+    func addLightning(_ sending: UIButton) {
         
-        let newText = textField.text?.stringByReplacingOccurrencesOfString(" ", withString: bolt)
+        let newText = textField.text?.replacingOccurrences(of: " ", with: bolt)
         textField.text = newText
 
     }

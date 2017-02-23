@@ -18,24 +18,24 @@ class ViewController2: UIViewController, UITextFieldDelegate  {
         super.viewDidLoad()
         
         // Create the Button
-        let button = UIButton(type: .Custom)
+        let button = UIButton(type: .custom)
         let boltImage = UIImage(named: "lightening-bolt")!
-        button.setImage(boltImage, forState: .Normal)
+        button.setImage(boltImage, for: UIControlState())
         button.frame = CGRect(x: 0, y: 0, width: 28, height: 28)
         
         // Add Target Method
-        button.addTarget(self, action: #selector(addLightening), forControlEvents: .TouchDown)
+        button.addTarget(self, action: #selector(addLightening), for: .touchDown)
         
         // Place the button in the right side of the text field
         textField.rightView = button
-        textField.rightViewMode = .Always
+        textField.rightViewMode = .always
     }
     
     
     // MARK: -  Repalce Spaces ⚡
     
-    @IBAction func addLightening(sending: UIButton) {
-        let newString = textField.text!.stringByReplacingOccurrencesOfString(" ", withString: lighteningString)
+    @IBAction func addLightening(_ sending: UIButton) {
+        let newString = textField.text!.replacingOccurrences(of: " ", with: lighteningString)
         
         textField.resignFirstResponder()
         
@@ -44,7 +44,7 @@ class ViewController2: UIViewController, UITextFieldDelegate  {
     
     // MARK: - UITextFieldDelegate
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
         return false
