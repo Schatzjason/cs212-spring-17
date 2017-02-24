@@ -69,20 +69,15 @@ class ViewController3: UIViewController, UITextFieldDelegate {
         // Calculate the new frame
         let keyboardSize = (notification.userInfo![UIKeyboardFrameBeginUserInfoKey]! as AnyObject).cgRectValue.size
         let newOrigin = CGPoint(x: originalFrame.origin.x, y: originalFrame.origin.y - keyboardSize.height)
-        let insets = CGRect(origin: newOrigin, size: originalFrame.size)
+        let newFrame = CGRect(origin: newOrigin, size: originalFrame.size)
         
-        // Set the frame, with animation.
-        UIView.animate(withDuration: 0.3, animations: {
-            self.view.frame = insets
-        }) 
+        self.view.frame = newFrame
     }
     
     @objc func keyboardHides(_ notification: Notification) {
         
         if let originalFrame = self.originalFrame {
-            UIView.animate(withDuration: 0.3, animations: {
-                self.view.frame = originalFrame
-            })
+            self.view.frame = originalFrame
         }
     }
     
