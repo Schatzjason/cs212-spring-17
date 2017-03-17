@@ -1,4 +1,4 @@
-//
+ //
 //  ViewController.swift
 //  CodeSegue
 //
@@ -11,19 +11,33 @@ import UIKit
 class ViewController: UIViewController {
     
     var count = 222
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.navigationItem.title = "Peach"
+    }
 
-    @IBAction func presentModaly(_ sender: Any) {
-        
-        let contoller = self.storyboard!.instantiateViewController(withIdentifier: "YellowViewController")
-        let yellowVC = contoller as! YellowViewController
-        
+    @IBAction func presentUpdatedCount() {
         count += 1
+        self.performSegue(withIdentifier: "PresentYellow", sender: self)
+    }
+    
+    @IBAction func presentRedViewController() {
+        self.performSegue(withIdentifier: "PresentRed", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if segue.identifier == "PresentYellow" {
+            let controller = segue.destination as! YellowViewController
         
-        yellowVC.value = count
-        yellowVC.message = "Bam!!"
+            controller.value = count
+            controller.message = "Rock"
+        }
         
-        present(yellowVC, animated: true, completion: nil)
-        
+        if segue.identifier == "PresentRed" {
+            // do something else
+        }
     }
 }
-

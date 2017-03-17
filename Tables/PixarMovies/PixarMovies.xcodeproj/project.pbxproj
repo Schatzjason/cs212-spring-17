@@ -15,6 +15,7 @@
 		4D1388851E7B3C30000409CD /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1388841E7B3C30000409CD /* Movie.swift */; };
 		4D1388871E7B3C9D000409CD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1388861E7B3C9D000409CD /* Model.swift */; };
 		4D1388891E7B4B25000409CD /* MovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1388881E7B4B25000409CD /* MovieTableViewController.swift */; };
+		4D1388AB1E7B8E09000409CD /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1388AA1E7B8E09000409CD /* MovieTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		4D1388841E7B3C30000409CD /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		4D1388861E7B3C9D000409CD /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		4D1388881E7B4B25000409CD /* MovieTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTableViewController.swift; sourceTree = "<group>"; };
+		4D1388AA1E7B8E09000409CD /* MovieTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				4D1388761E7B3C21000409CD /* Main.storyboard */,
 				4D13887B1E7B3C21000409CD /* LaunchScreen.storyboard */,
 				4D13887E1E7B3C21000409CD /* Info.plist */,
+				4D1388AA1E7B8E09000409CD /* MovieTableViewCell.swift */,
 			);
 			path = PixarMovies;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 			files = (
 				4D1388891E7B4B25000409CD /* MovieTableViewController.swift in Sources */,
 				4D1388751E7B3C21000409CD /* MovieDetailViewController.swift in Sources */,
+				4D1388AB1E7B8E09000409CD /* MovieTableViewCell.swift in Sources */,
 				4D1388871E7B3C9D000409CD /* Model.swift in Sources */,
 				4D1388851E7B3C30000409CD /* Movie.swift in Sources */,
 				4D1388731E7B3C21000409CD /* AppDelegate.swift in Sources */,
@@ -311,6 +315,7 @@
 				4D1388831E7B3C21000409CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

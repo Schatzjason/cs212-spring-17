@@ -16,8 +16,14 @@ class YellowViewController: UIViewController {
     @IBOutlet var valueLabel: UILabel!
     @IBOutlet var messageLabel: UILabel!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.navigationItem.title = "Yellow"
+    }
+    
     @IBAction func dismiss() {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController!.popViewController(animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {

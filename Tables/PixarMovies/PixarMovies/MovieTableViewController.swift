@@ -29,11 +29,13 @@ class MovieTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieTableViewCell
+        
         let movie = movies[indexPath.row]
         
-        cell.textLabel!.text = movie.title
-        cell.imageView?.image = UIImage(named: movie.posterName)
+        cell.titleLabel.text = movie.title
+        cell.dateLabel.text = "\(movie.year)"
+        cell.poster.image = UIImage(named: movie.posterName)
 
         return cell
     }
