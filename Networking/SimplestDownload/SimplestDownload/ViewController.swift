@@ -9,6 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet var webView: UIWebView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,7 +19,8 @@ class ViewController: UIViewController {
 
         let url = URL(string: "https://ccsf.edu")!
         let task = URLSession.shared.dataTask(with: url, completionHandler:
-            {data, response, error in
+            {
+                data, response, error in
          
                 // Handle the error if there is one...
                 if let error = error {
@@ -25,7 +28,12 @@ class ViewController: UIViewController {
                     return
                 }
                 
-                print("data: \(data)")
+                let htmlString = String(bytes: data!, encoding: .utf8)
+                
+                DispatchQueue.main.async
+                {
+                    self.webView.loadHTMLString(htmlString!, baseURL: url)
+                }
             }
         )
         
