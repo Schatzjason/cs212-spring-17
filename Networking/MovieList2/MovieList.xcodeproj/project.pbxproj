@@ -16,7 +16,7 @@
 		4DE079311BE2BF3C007C65AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DE0792F1BE2BF3C007C65AF /* Main.storyboard */; };
 		4DE079331BE2BF3C007C65AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DE079321BE2BF3C007C65AF /* Assets.xcassets */; };
 		4DF87C8D1EA02A6100B9C966 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF87C8C1EA02A6100B9C966 /* Person.swift */; };
-		4DF87C8F1EA02B0100B9C966 /* ModelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF87C8E1EA02B0100B9C966 /* ModelHelper.swift */; };
+		4DF87C8F1EA02B0100B9C966 /* ModelStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF87C8E1EA02B0100B9C966 /* ModelStore.swift */; };
 		4DF87C911EA0378300B9C966 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF87C901EA0378300B9C966 /* MovieListViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,7 +32,7 @@
 		4DE079321BE2BF3C007C65AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4DE079371BE2BF3C007C65AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DF87C8C1EA02A6100B9C966 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
-		4DF87C8E1EA02B0100B9C966 /* ModelHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelHelper.swift; sourceTree = "<group>"; };
+		4DF87C8E1EA02B0100B9C966 /* ModelStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelStore.swift; sourceTree = "<group>"; };
 		4DF87C901EA0378300B9C966 /* MovieListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,7 +65,7 @@
 				4D8B05031BE2C87800CF1A56 /* TMDBURLs.swift */,
 				4D8B04FE1BE2C87800CF1A56 /* ImageCache.swift */,
 				4DF87C8C1EA02A6100B9C966 /* Person.swift */,
-				4DF87C8E1EA02B0100B9C966 /* ModelHelper.swift */,
+				4DF87C8E1EA02B0100B9C966 /* ModelStore.swift */,
 			);
 			name = TheMovieDB;
 			sourceTree = "<group>";
@@ -170,7 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D8B05041BE2C87800CF1A56 /* ImageCache.swift in Sources */,
-				4DF87C8F1EA02B0100B9C966 /* ModelHelper.swift in Sources */,
+				4DF87C8F1EA02B0100B9C966 /* ModelStore.swift in Sources */,
 				4DE0792A1BE2BF3C007C65AF /* AppDelegate.swift in Sources */,
 				4D8B05071BE2C87800CF1A56 /* TMDB.swift in Sources */,
 				4D8B05091BE2C87800CF1A56 /* TMDBURLs.swift in Sources */,

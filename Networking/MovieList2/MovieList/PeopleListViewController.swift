@@ -60,7 +60,7 @@ class PersonListViewController: UIViewController, UITableViewDataSource, UITable
             }
             
             // Update the view controller's state
-            self.people = ModelHelper.peopleFromData(data, keyForArray: TMDB.Keys.Results)
+            self.people = ModelStore.peopleFromData(data, keyForArray: TMDB.Keys.Results)
             
             // Send the UI Updating work back to the main thread
             DispatchQueue.main.async {

@@ -8,7 +8,34 @@
 
 import Foundation
 
-class ModelHelper {
+class ModelStore {
+    
+    static func moviesForPerson(_ person: Person, completionHandler: @escaping ([Movie]) -> ()) {
+        
+        // URL
+        let p = [TMDB.Keys.ID : person.id]
+        let url = TMDBURLs.URLForResource(resource: TMDB.Resources.PersonIDMovieCredits, parameters: p)
+        
+        // Task
+        let task = URLSession.shared.dataTask(with: url) {
+            data, response, error in
+            
+            var result: [Movie]
+            
+            if let error = error {
+                print(error)
+                result = []
+            } else {
+                result = moviesFromData(data, keyForArrays: "cast")
+            }
+            
+            DispatchQueue.main.async {
+                completionHandler(result)
+            }
+        }
+        
+        task.resume()
+    }
     
     static func moviesFromData(_ data: Data?, keyForArrays: String) -> [Movie] {
         

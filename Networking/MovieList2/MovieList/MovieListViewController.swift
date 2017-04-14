@@ -1,10 +1,3 @@
-//
-//  MovieListViewController.swift
-//  MovieList
-//
-//  Created by ccsfcomputers on 10/29/15.
-//  Copyright (c) 2015 Jason Schatz. All rights reserved.
-//
 
 import UIKit
 
@@ -13,16 +6,33 @@ class MovieListViewController: UITableViewController {
     var movies: [Movie] = [Movie]()
     var person: Person!
     
+    /*
+     * This is a new viewDidLoad, with a little more help from a 
+     * ModelStore type class. To get the networking code out of the
+     * ViewController.
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Put the actor's name in the navigation bar??
         self.navigationItem.title = person.name
 
-//        ModelStore.moviesForPersonID(person.id) { movies in
-//            self.movies = movies
-//            self.tableView.reloadData()
-//        }
+        // Here is a prettified interface for getting the movies a person has acted in
+        ModelStore.moviesForPerson(person) { movies in
+            self.movies = movies
+            self.tableView.reloadData()
+        }
+    }
+
+    /*
+     *  This is the view did load from lecture. I gave it the goofy name
+     *  "originalViewDidLoad just to keep it in the class.
+     */
+    func originalViewDidLoad() {
+        super.viewDidLoad()
+        
+        // Put the actor's name in the navigation bar??
+        self.navigationItem.title = person.name
         
         // URL
         let p = [TMDB.Keys.ID : person.id]
@@ -34,7 +44,7 @@ class MovieListViewController: UITableViewController {
             
             if let error = error {print(error); return}
             
-            let cast = ModelHelper.moviesFromData(data, keyForArrays: "cast")
+            let cast = ModelStore.moviesFromData(data, keyForArrays: "cast")
             
             self.movies = cast
             
