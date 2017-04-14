@@ -24,7 +24,7 @@ struct TMDBURLs {
         var parameters = p
         
         // Add in the API Key
-        parameters["api_key"] = TMDB.Constants.ApiKey as AnyObject?
+        parameters["api_key"] = TMDB.Constants.ApiKey
         
         // Substitute the id parameter in place of the IDPlaceholder
         if resource.range(of: IDPlaceholder) != nil {

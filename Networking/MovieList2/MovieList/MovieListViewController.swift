@@ -17,9 +17,34 @@ class MovieListViewController: UITableViewController {
         super.viewDidLoad()
 
         // Put the actor's name in the navigation bar??
+        self.navigationItem.title = person.name
+
+//        ModelStore.moviesForPersonID(person.id) { movies in
+//            self.movies = movies
+//            self.tableView.reloadData()
+//        }
         
-        // Get the credits for this person??
-        print("In Movie List. Person: \(person.name)")
+        // URL
+        let p = [TMDB.Keys.ID : person.id]
+        let url = TMDBURLs.URLForResource(resource: TMDB.Resources.PersonIDMovieCredits, parameters: p)
+        
+        // Task
+        let task = URLSession.shared.dataTask(with: url) {
+            data, response, error in
+            
+            if let error = error {print(error); return}
+            
+            let cast = ModelHelper.moviesFromData(data, keyForArrays: "cast")
+            
+            self.movies = cast
+            
+            // reload the table
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        
+        task.resume()
     }
     
     // MARK: - Table View
@@ -55,8 +80,14 @@ class MovieListViewController: UITableViewController {
             // create task
             let task = URLSession.shared.dataTask(with: url, completionHandler: {
                 data, response, error in
+
+                if let error = error {print(error); return}
                 
-                // How do we load the table view cell image here??
+                let image = UIImage(data: data!)
+                
+                DispatchQueue.main.async {
+                    cell.imageView?.image = image
+                }
             })
             
             // resume task

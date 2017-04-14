@@ -66,6 +66,7 @@ struct TMDB {
        static let PersonIDMovieCredits = "person/{id}/movie_credits";
        static let PersonIDImages = "person/{id}/images";
        static let PersonIDChanges = "person/{id}/changes";
+       static let PersonIDCombinedCredits = "person/{id}/combined_credits"
        static let PersonPopular = "person/popular";
        static let PersonLatest = "person/latest";
         

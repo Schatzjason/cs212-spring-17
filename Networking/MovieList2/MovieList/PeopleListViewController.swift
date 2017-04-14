@@ -9,6 +9,8 @@
 import UIKit
 
 class PersonListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+    
+    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var tableView: UITableView!
@@ -38,6 +40,7 @@ class PersonListViewController: UIViewController, UITableViewDataSource, UITable
             setUIToDownloading(false)
             self.people = []
             self.tableView.reloadData()
+            return
         }
         
         // Start the downloading UI
@@ -46,10 +49,10 @@ class PersonListViewController: UIViewController, UITableViewDataSource, UITable
         // Get URL
         let parameters = ["query" : searchText]
         let url = TMDBURLs.URLForResource(resource: TMDB.Resources.SearchPerson, parameters: parameters)
-
+        
         let task = URLSession.shared.dataTask(with: url) {
             data, response, error in
-
+            
             // Simple error handling
             if let error = error {
                 print(error)
