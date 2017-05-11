@@ -10,8 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    let kCount = "click-count"
+    
     // This is the model class, See Counter.swift
-    var counter: Counter = Counter()
+    var counter: Counter!
     
     // A reference to the label in the view heirarchy
     // We need this so that we can set its text
@@ -25,11 +27,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Find the app delegate, in order to get its counter
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.counter = appDelegate.counter
+        
         // Make a label object
         let frame = CGRect(x: 125, y: 120, width: 100, height: 50)
         label = UILabel(frame: frame)
         label!.font = UIFont.systemFont(ofSize: 70)
-        label!.text = "0"
+        label!.text = "\(counter.count)"
         self.view.addSubview(label!)
         
         // Make a button

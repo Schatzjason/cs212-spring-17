@@ -15,11 +15,20 @@ import Foundation
 
 class Counter {
     
-    // The private property we will use to 
-    // hold the value that is being incremented
-    private var value: Int = 0
+    private var value: Int
+    private let kCount = "count"
     
-    // A read-only count property
+    init() {
+        // get the value using from user defaults
+        value = UserDefaults.standard.integer(forKey: kCount)
+    }
+    
+    public func save() {
+        // save the value to user defaults
+        UserDefaults.standard.set(value, forKey: kCount)
+        print("save... count: \(value)")
+    }
+    
     var count: Int {
         get {
             return value
